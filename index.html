@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test file</title>
+	
+</head>
+<body>
+	<script>
+		var MyApp = {
+			manCtor: function(name, age) {
+				this.name = name;
+				this.age = age;
+			}
+		};
+
+		var myObj = new MyApp.manCtor("Artem", 28);
+
+		console.log(myObj);
+	</script>
+</body>
+</html>
