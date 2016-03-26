@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.mainScreen{
+			width: 150px;
+			height: 100px;
+		}
+		ul{
+			padding: 0;
+			list-style: none;
+			position: relative;
+		}
+		li{
+			width: 50px;
+			height: 50px;
+			float: left;
+			margin-right: 10px;
+		}
+		img{
+			width: 50px;
+			height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>
+				<img src="cocos.jpg">
+			</li>
+			<li><img src="straw.jpg"></li>
+			<li><img src="icecream.jpg"></li>
+			<li><img src="purple.jpg"></li>
+		</ul>
+	</div>
+	<div id="divWithSpans">
+		<span id="prev" data-attr="prev">Previous color</span>
+		<span id="next"  data-attr="next">Next color</span>
+	</div>
+	<div class="mainScreen" bac></div>
+	<script>
+		function Slider( ul, controls, classForDiv) {
+				this.ul = ul;
+				this.controls = controls;
+				this.classForDiv = classForDiv;
+			};
+		Slider.prototype.Init = function() {
+			var mainDiv = '<div class="' + this.classForDiv + '" ><div>';
+			this.ul.insertAdjacentHTML("beforeBegin", mainDiv);
+
+			console.log("done 1");
+		};
+
+
+		var sli = new Slider(document.querySelector("ul"), document.querySelector("#divWithSpans"), 'mainScreen');
+		sli.Init();
+	</script>
+	
+</body>
+</html>

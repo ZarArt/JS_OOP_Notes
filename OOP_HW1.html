@@ -5,33 +5,36 @@
 	<title>Document</title>
 
 	<script>
-		var man = function() {
+		function MAN() {
 			this.name = "MyName";
 		};
-		man.prototype.Walk = function() {
+		MAN.prototype.Walk = function() {
 				console.log("I can walk fast");
 		};
-		man.prototype.Eat = function() {
+		MAN.prototype.Eat = function() {
 				console.log("I can die without food");
 			};
-		man.prototype.Drink = function() {
+		MAN.prototype.Drink = function() {
 			console.log("I drink every day.");
 		};		
-		var doctor = function() {			
+		function DOCTOR() {			
 			
 		}
-		doctor.prototype.Cure = function() {
+		DOCTOR.prototype = Object.create(MAN.prototype);	
+
+		DOCTOR.prototype.Cure = function() {
 				console.log("I can cure people.");
 		}
-		var dentist = function() {			
+		function Dentist() {			
 			
 		}
-		dentist.prototype.CureTeeth = function() {
+		Dentist.prototype = Object.create(DOCTOR.prototype);
+		Dentist.prototype.CureTeeth = function() {
 				"I cure about teeth!"
-			}		
-		doctor.prototype = Object.create(man.prototype);	
-		dentist.prototype = Object.create(doctor.prototype);		
-		var jack = new dentist();		
+		}		
+		
+				
+		var jack = new Dentist();		
 		console.log(jack);
 		
 	</script>
