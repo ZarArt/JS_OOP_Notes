@@ -5,78 +5,35 @@
 	<title>Document</title>
 
 	<script>
-		var man = function(name, age) {
-			this.name = name;
-			this.age = age;
-			this.Walk = function(speed) {
-				console.log("I can walk with speed " + speed + " km per hour.");
-			};
-			this.Eat = function(food) {
-				console.log("I'm " + name + " and I can die without " + food + ".");
-			};
-			this.Drink = function(liquid) {
-				console.log("I drink " + liquid + " every day.");
-			};
+		var man = function() {
+			this.name = "MyName";
 		};
-
-		var soldier = function(name, age) {
-			this.name = name;
-			this.age = age;
-			this.Shoot = function() {
-				console.log("Soldier " + name + " is dangerous!" + " Soldier " + name + " can shoot!");
-			}
+		man.prototype.Walk = function() {
+				console.log("I can walk fast");
+		};
+		man.prototype.Eat = function() {
+				console.log("I can die without food");
+			};
+		man.prototype.Drink = function() {
+			console.log("I drink every day.");
+		};		
+		var doctor = function() {			
+			
 		}
-
-		var doctor = function(name, age) {
-			this.name = name;
-			this.age = age;
-			this.Cure = function() {
+		doctor.prototype.Cure = function() {
 				console.log("I can cure people.");
-			}
 		}
-
-		var dentist = function(name, age) {
-			this.name = name;
-			this.age = age;
-			this.CureTeeth = function() {
+		var dentist = function() {			
+			
+		}
+		dentist.prototype.CureTeeth = function() {
 				"I cure about teeth!"
-			}
-		}
-
-		var surgeon = function(name, age) {
-			this.name = name;
-			this.age = age;
-			this.DoOperations = function() {
-				"I do any operations!"
-			}
-		}
-
-		soldier.prototype = new man();
-		doctor.prototype = new man();
-		dentist.prototype = new doctor("Genry", 32);
-		surgeon.prototype = new doctor();
-
-		dentist.prototype.Swim = function() {
-			console.log("I can swim!");
-		}
-
-		var sam = new soldier("Sam", 25);
-		var mike = new soldier("Mike", 34);
-		var john = new doctor("John", 40);
-
-		var jack = new dentist("Jack", 30);
-		var bill = new surgeon("Bill", 45);
-		console.log(sam, mike, john, jack, bill);
-		sam.Shoot();
-		sam.Eat("meat");
-
-		mike.Eat("apple");
-
-		john.Cure();
-		john.Drink("coffee");
-
-		jack.CureTeeth();
-		bill.DoOperations();
+			}		
+		doctor.prototype = Object.create(man.prototype);	
+		dentist.prototype = Object.create(doctor.prototype);		
+		var jack = new dentist();		
+		console.log(jack);
+		
 	</script>
 
 </head>
