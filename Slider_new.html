@@ -5,8 +5,12 @@
 	<title>Document</title>
 	<style>
 		.mainScreen{
-			width: 150px;
-			height: 100px;
+			width: 240px;
+			height: 320px;
+		}
+		.mainScreen img{
+			width: 240px;
+			height: 320px;
 		}
 		ul{
 			padding: 0;
@@ -26,11 +30,9 @@
 	</style>
 </head>
 <body>
-	<div>
+	<div id="container">
 		<ul>
-			<li>
-				<img src="cocos.jpg">
-			</li>
+			<li><img src="cocos.jpg"></li>
 			<li><img src="straw.jpg"></li>
 			<li><img src="icecream.jpg"></li>
 			<li><img src="purple.jpg"></li>
@@ -40,24 +42,32 @@
 		<span id="prev" data-attr="prev">Previous color</span>
 		<span id="next"  data-attr="next">Next color</span>
 	</div>
-	<div class="mainScreen" bac></div>
 	<script>
 		function Slider( ul, controls, classForDiv) {
-				this.ul = ul;
-				this.controls = controls;
-				this.classForDiv = classForDiv;
-			};
+			this.ul = ul;
+			this.controls = controls;
+			this.classForDiv = classForDiv;
+
+						
+		};
 		Slider.prototype.Init = function() {
-			var mainDiv = '<div class="' + this.classForDiv + '" ><div>';
+			var mainDiv = '<div class="' + this.classForDiv + '">'+ '<img src="cocos.jpg">' +'</div>';
 			this.ul.insertAdjacentHTML("beforeBegin", mainDiv);
+			this.ul.addEventListener("click", this.DisplayPictureByClick);
 
 			console.log("done 1");
 		};
+		Slider.prototype.DisplayPictureByClick = function(e) {
+				var target = e.target;
+				var attr = target.getAttribute("src");
+				var screen = document.querySelector(".mainScreen");
+				screen.style.backgroundimage = attr;
+			}
+
 
 
 		var sli = new Slider(document.querySelector("ul"), document.querySelector("#divWithSpans"), 'mainScreen');
 		sli.Init();
-	</script>
-	
+	</script>	
 </body>
 </html>

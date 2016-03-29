@@ -10,6 +10,8 @@
 		};
 		MAN.prototype.Walk = function() {
 				console.log("I can walk fast");
+				this.Eat();
+				this.Cure();
 		};
 		MAN.prototype.Eat = function() {
 				console.log("I can die without food");
@@ -36,6 +38,7 @@
 				
 		var jack = new Dentist();		
 		console.log(jack);
+		jack.Walk();
 		
 	</script>
 
